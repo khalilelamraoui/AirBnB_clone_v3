@@ -9,7 +9,7 @@ from api.v1.views import app_views
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
 def get_states():
     """ Retrieves the list of all State objects """
-    states = storage.all("State").values()
+    states = storage.all(State)
     states_list = []
     for state in states.values():
         states_list.append(state.to_dict())
@@ -37,7 +37,7 @@ def delete_state(state_id):
 def post_state():
     """ Creates a State object """
     if not request.get_json():
-        abort(400,'Not a JSON')
+        abort(400, 'Not a JSON')
     if 'name' not in request.get_json():
         abort(400, 'Missing name')
     state = State(**request.get_json())
@@ -57,4 +57,3 @@ def put_state(state_id):
             setattr(state, k, v)
     state.save()
     return jsonify(state.to_dict()), 200
-
