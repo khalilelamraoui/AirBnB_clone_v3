@@ -9,7 +9,7 @@ from models.city import City
 
 
 @app_views.route('/cities/<city_id>/places', methods=['GET'],
-                    strict_slashes=False)
+                 strict_slashes=False)
 def get_places(city_id):
     """ Retrieves the list of all Place objects """
     city = storage.get(City, city_id)
@@ -32,7 +32,7 @@ def get_place(place_id):
 
 
 @app_views.route('/places/<place_id>', methods=['DELETE'],
-                    strict_slashes=False)
+                 strict_slashes=False)
 def delete_place(place_id):
     """ Deletes a Place object """
     place = storage.get(Place, place_id)
@@ -44,7 +44,7 @@ def delete_place(place_id):
 
 
 @app_views.route('/cities/<city_id>/places', methods=['POST'],
-                    strict_slashes=False)
+                 strict_slashes=False)
 def post_place(city_id):
     """ Creates a Place object """
     city = storage.get(City, city_id)
@@ -63,7 +63,7 @@ def post_place(city_id):
 
 
 @app_views.route('/places/<place_id>', methods=['PUT'],
-                    strict_slashes=False)
+                 strict_slashes=False)
 def put_place(place_id):
     """ Updates a Place object """
     place = storage.get(Place, place_id)
